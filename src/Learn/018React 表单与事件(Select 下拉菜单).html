@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>React 18</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+
+<script type="text/babel">
+
+    class FlavorForm extends React.Component{
+        constructor(props) {
+            super(props);
+            this.state={value:"jindong"}
+            this.handleSubmit = this.handleSubmit.bind(this);
+            this.handleChange = this.handleChange.bind(this);
+
+        }
+
+
+        handleSubmit(event){
+            alert(this.state.value);
+            event.preventDefault();
+        };
+
+        handleChange(event){
+            this.setState({
+                value:event.target.value
+            })
+        }
+
+        render() {
+            return (
+                <form onSubmit={this.handleSubmit}>
+                <select value={this.state.value} onChange={this.handleChange}>
+                    <option value="taobao">淘宝</option>
+                    <option value="jindong">京东</option>
+                    <option value="pingduoduo">拼多多</option>
+
+                </select>
+
+                <input type="submit" value="提交"/>
+                </form>
+            );
+        }
+    }
+
+
+
+
+ReactDOM.render(
+  <FlavorForm/>,
+  document.getElementById('example')
+);
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React 011</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+
+
+    </style>
+
+</head>
+
+<body>
+    <div id="example"></div>
+
+    <script type="text/babel">
+const numbers = ['aa', 'bb', 'cc', 'dd', 'ee'];
+// const listItems = numbers.map((numbers) =>
+//   <li>{numbers}</li>
+// );
+
+
+function FunListems(props) {
+    const numbers = props.numbers;
+    const listItems = numbers.map((item)=>
+        <ListItem key={item.toString()} value={item}/>
+    );
+    return <ul>{listItems}</ul>;
+}
+
+function  ListItem(props) {
+    return <li>{props.value} ++</li>
+}
+
+
+
+const listItems = numbers.map((item)=>
+    <li>{item}</li>
+)
+
+
+
+ReactDOM.render(
+    <div>
+        <ol>{listItems}</ol>,
+        <FunListems numbers = {numbers}/>
+    </div>,
+
+  document.getElementById('example')
+);
+</script>
+
+</body>
+
+</html>

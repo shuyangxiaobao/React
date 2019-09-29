@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React 12</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+
+
+    </style>
+
+</head>
+
+<body>
+    <div id="example"></div>
+
+    <script type="text/babel">
+function Page(props) {
+    const data = props.data;
+
+
+//**********第1种方式****************/
+
+    const test = data.map(item =>
+        <div>
+            <h1>{item.name}</h1> 
+            <p>{item.school}</p>   
+        </div>         
+    );
+  return (
+    <div>
+      {test}
+    </div>
+  );
+
+
+//**********第2种方式****************/
+    // return (
+    //     data.map(item =>
+    //     <div>
+    //         <h1>{item.name}</h1> 
+    //         <p>{item.school}</p>   
+    //     </div>        
+    // )
+    // );
+    
+}
+
+class Counter extends React.Component{
+  constructor(props) {
+      super(props);
+      this.state = {clickCount: 0};
+  }
+  render() {
+    const data = this.props.data;
+    return (
+      data.map(item => 
+      <div key={item.id}>
+        <h1>{item.name}</h1>
+        </div>)  
+    );
+  }
+}
+
+class Countere extends React.Component{
+  constructor(props) {
+      super(props);
+      this.state = {clickCount: 0};
+      this.handleClick = this.handleClick.bind(this);
+  }
+  
+  handleClick() {
+    this.setState(function(state) {
+      return {clickCount: state.clickCount + 1};
+    });
+  }
+  render () {
+    return (<h2 onClick={this.handleClick}>点我！点击次数为: {this.state.clickCount}</h2>);
+  }
+}
+
+
+
+
+
+const arr = [{id:"1",name:"xiaoming",school:"沭阳高级中学"},
+            {id:"2",name:"xiaobao",school:"沭阳国际中学"}];
+
+ReactDOM.render(
+  <div>
+      <Page data = {arr}/>
+      <br/>
+      <Counter data = {arr}/>
+    </div>,
+  document.getElementById('example')
+);
+</script>
+
+</body>
+
+</html>

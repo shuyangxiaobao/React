@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React 19</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+    class Reservation extends React.Component{
+        constructor(props) {
+            super(props);
+            this.handleChange = this.handleChange.bind(this);
+            this.state={
+                isGoing:true,
+                personAmount:9,
+            }
+        }
+        handleChange(event){
+            const name = event.target.name;
+            if (event.target.type == 'checkbox') {
+                this.setState({
+                    [name]:event.target.checked
+                })
+            } else {
+
+                this.setState({
+                    [name]:event.target.value
+                })
+            }
+        }
+            
+        render() {
+            return (
+                <div>
+                    <label>
+                    是否离开
+                    <input 
+                    type="checkbox" 
+                    name="isGoing"
+                    checked={this.state.isGoing} 
+                    onChange={this.handleChange}
+                    
+                    />
+                    </label>
+                    <br/>
+                    <label>
+                    访客数量
+                        <input 
+                        type="number" 
+                        name="personAmount"
+                        value={this.state.personAmount}
+                        onChange={this.handleChange}
+                        />
+                    </label>
+                </div>
+            )
+        }
+
+    }
+
+
+
+ReactDOM.render(
+  <Reservation />,
+  document.getElementById('example')
+);
+
+</script>
+
+</body>
+
+</html>

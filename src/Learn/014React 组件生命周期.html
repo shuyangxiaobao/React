@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React 14</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+
+
+    </style>
+
+</head>
+
+<body>
+    <div id="example"></div>
+
+    <script type="text/babel">
+
+class Page1 extends React.Component{
+    constructor(props) {
+      super(props);
+      this.state = {opacity:0.6 ,add:true};
+    }
+
+    componentWillMount() {
+      console.log('1111Component WILL MOUNT!')
+  }
+  componentWillReceiveProps(newProps) {
+        console.log('555555Component WILL RECEIVE PROPS!')
+  }
+  shouldComponentUpdate(newProps, newState) {
+        return true;
+  }
+  componentWillUpdate(nextProps, nextState) {
+        console.log('3333333Component WILL UPDATE!');
+  }
+  componentDidUpdate(prevProps, prevState) {
+        console.log('444444Component DID UPDATE!')
+  }
+  componentWillUnmount() {
+         console.log('Component WILL UNMOUNT!')
+  }
+
+    componentDidMount() {
+        console.log('2222222Component DID MOUNT!')
+
+        this.timer = setInterval(() => {
+            var opacity = this.state.opacity;
+            if(this.state.add){
+                opacity += 0.02;
+            } else {
+                opacity -= 0.02;
+            }
+            if (opacity < 0.1 || opacity > 1.0) {
+                this.setState({
+                    add:!this.state.add  
+                })
+            }
+            this.setState({
+                opacity:opacity  
+            })
+            
+        }, 50);
+    }
+
+    render() {
+    const data = this.props.data;
+    return (
+        <div style={{opacity: this.state.opacity,fontSize: 90}}>
+        Hello{this.props.data}
+        </div>
+    );
+    }
+}
+
+
+
+ReactDOM.render(
+    <div>
+        <Page1 data = {'xiao'}/>
+
+    </div>,
+  document.getElementById('example')
+);
+</script>
+
+</body>
+
+</html>

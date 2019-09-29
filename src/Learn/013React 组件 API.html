@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>React 13</title>
+<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<style>
+
+
+</style>
+
+</head>
+
+<body>
+<div id="example"></div>
+
+<script type="text/babel">
+
+class Counter extends React.Component{
+  constructor(props) {
+      super(props);
+      this.state = {clickCount: 0};
+    //   this.handleClick = this.handleClick.bind(this);
+  }
+  
+  handleClick = ()=> {
+        /*********第1种方式**********/
+    // this.setState({
+    //     clickCount:this.state.clickCount + 1
+    // })
+        /*********第2种方式**********/
+    // this.setState(function (state3) {
+    //     return {clickCount:state3.clickCount+1}      
+    // })
+
+    this.replaceState(
+        function(state) {
+           return {clickCount:99}
+        }
+    )
+
+  }
+  render () {
+    return (<h2 onClick={this.handleClick}>点我！点击次数为: {this.state.clickCount}</h2>);
+  }
+}
+
+
+ReactDOM.render(
+  <Counter />,
+  document.getElementById('example')
+);
+</script>
+
+</body>
+</html>

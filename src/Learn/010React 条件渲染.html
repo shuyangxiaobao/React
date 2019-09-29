@@ -1,0 +1,88 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>React 实例</title>
+  <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+  <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+  <style>
+    .warning {
+      background-color: red;
+      text-align:center;
+      width: 50%;
+      /* padding: 10px; */
+      font-size: 40pt;
+      color: white;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="example"></div>
+
+
+  <script type="text/babel">
+
+
+
+  class Page extends React.Component{
+    constructor(props) {
+      super(props)
+      this.state={ showStatus:true}
+     
+    }
+    onClick = ()=>{
+      this.setState({
+        showStatus:!this.state.showStatus
+      });
+    }
+
+
+    render() {
+      return (
+        <div>
+          <Box warn={this.state.showStatus}/>
+          <button onClick={this.onClick} style={mystyle}> {this.state.showStatus ? "隐藏":"显示" }</button>
+          </div>
+      )
+    }
+
+  }
+
+  function Box(props) {
+    if (props.warn == false) {
+      return null;
+    } 
+    return (
+      <div className = "warning">
+        警告
+      </div>
+    )
+  }
+
+  
+  var mystyle = {
+    fontSize: 40,
+    // color: "#ffff00",
+    width:200,
+    height: 300
+}
+
+
+
+ReactDOM.render(
+  <Page />,
+  document.getElementById('example')
+);
+</script>
+
+</body>
+
+</html>
