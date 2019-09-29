@@ -19,7 +19,11 @@ export default class Entrance extends React.Component {
         this.adverScroll = this.adverScroll.bind(this);
         this.bottomtabbarClick = this.bottomtabbarClick.bind(this);
 
-        werwefgerert
+
+
+
+
+        
     }
 
     componentDidMount() {
