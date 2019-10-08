@@ -15,13 +15,11 @@ export default class NEWS extends React.Component {
         this.jumpToData = this.jumpToData.bind(this);
         this.toPoint = this.toPoint.bind(this);
         this.functiontimetrans = this.functiontimetrans.bind(this);
-
-
-
+        this.cellClick = this.cellClick.bind(this);
     }
 
     jumpToData() {
-        alert('jumpToData');
+        alert('jumpToData3');
     }
     toPoint(percent) {
         var str = percent.replace("%", "");
@@ -75,38 +73,45 @@ export default class NEWS extends React.Component {
         return Y + M + D + h + m + s;
     }
 
+    cellClick = (index,item) => {
+        this.props.myRoute.push({
+            pathname:"/newsdetail",
+            params:{url:this.state.baseIP+item.htmlFive+"?id="+item.id}
+        });
+    }
+
 
 
     render() {
         var titleStyle = {
             color: "#FFFFFF",
-            numberOfLines:1,
+            numberOfLines: 1,
             position: "absolute",
-            top:19,
-            left:15,
-            right:15,
-            textAlign:"left",
-            height:48,
-            overflow:"hidden",
-            lineHeight:"24px",
+            top: 19,
+            left: 15,
+            right: 15,
+            textAlign: "left",
+            height: 48,
+            overflow: "hidden",
+            lineHeight: "24px",
             fontSize: "14px",
         };
 
-        var timeStyle={
+        var timeStyle = {
             color: "#7E829D",
             fontSize: "11px",
             position: "absolute",
             top: 76,
             left: 15,
         }
-        var browseNumStyle={
+        var browseNumStyle = {
             color: "#7E829D",
             fontSize: "11px",
             position: "absolute",
             top: 76,
             left: 170,
         }
-        var lineStyle={
+        var lineStyle = {
             position: "absolute",
             bottom: 1,
             left: 15,
@@ -160,7 +165,9 @@ export default class NEWS extends React.Component {
                                 height: 116,
                                 backgroundColor: "#21212b",
                                 position: "relative",
-                            }}>
+                            }}
+                            onClick={() => this.cellClick(index,item)}
+                        >
                             <label style={titleStyle}>{item.title}</label>
                             <label style={timeStyle}>{this.functiontimetrans(item.createDate)}</label>
                             <label style={browseNumStyle}>  {item.browseNum}浏览</label>

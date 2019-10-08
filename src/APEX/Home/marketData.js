@@ -12,7 +12,14 @@ export default class MarketData extends React.Component {
     }
 
     jumpToData() {
-        alert('jumpToData');
+        alert('1111');
+
+        // this.props.myroute.push
+        // this.props.history.push
+        this.props.myRoute.push({
+            pathname:"/news",
+            // state:{args:args}
+        });
     }
     toPoint(percent) {
         var str = percent.replace("%", "");
@@ -56,6 +63,7 @@ export default class MarketData extends React.Component {
                             width: 16,
                             height: 16,
                         }}
+                        src={require('../image/more.png')}
                     />
                 </div>
 
@@ -94,3 +102,5 @@ export default class MarketData extends React.Component {
             </div>)
     }
 }
+
+

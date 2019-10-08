@@ -2,12 +2,16 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "3.1.2",
-    "reactjs-swiper": "^0.1.0"
+    "reactjs-swiper": "^0.1.0",
+    "history": "^4.7.2",
+    "material-ui": "^0.20.0",
+    "react-tap-event-plugin": "^3.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

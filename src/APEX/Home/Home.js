@@ -14,16 +14,10 @@ const images = ['../image/banner.png', '../image/banner.png']
 export default class Entrance extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { index: 1,selectIndex:0 };
+        this.state = { index: 1, selectIndex: 0 };
         this.leftClick = this.leftClick.bind(this);
         this.adverScroll = this.adverScroll.bind(this);
         this.bottomtabbarClick = this.bottomtabbarClick.bind(this);
-
-
-
-
-
-        
     }
 
     componentDidMount() {
@@ -46,7 +40,12 @@ export default class Entrance extends React.Component {
 
 
     leftClick() {
-        alert('1');
+
+        // 路由跳转
+        this.props.myRoute.push({
+            pathname: "/news",
+            // state:{args:args}
+        });
     }
     adverScroll(event) {
         //    var obj =  document.getElementById('xiaobao');
@@ -67,9 +66,9 @@ export default class Entrance extends React.Component {
         // })
     }
 
-    bottomtabbarClick(index){
+    bottomtabbarClick(index) {
         this.setState({
-            selectIndex:index
+            selectIndex: index
         })
     }
 
@@ -115,10 +114,6 @@ export default class Entrance extends React.Component {
             left: 0,
             top: 0,
             overflow: "hidden",
-            overflowx: "hidden",
-
-
-
             // overflow:"hidden",
         }
 
@@ -150,7 +145,7 @@ export default class Entrance extends React.Component {
                 // bottom:0,
                 // left:0,
                 // right:0,
-                height:height-49,
+                height: height - 49,
                 // overflow:"hidden",
 
 
@@ -178,14 +173,10 @@ export default class Entrance extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <MarketData data={datas} />
-                    <NEWS data={datas} />
+                    <MarketData data={datas} myRoute={this.props.myRoute} />
+                    <NEWS data={datas}  myRoute={this.props.myRoute}/>
+                </div>
 
-
-
-
-                </div>          
-          
             </div>
 
         )
@@ -232,7 +223,7 @@ var style1 = {
     top: 0,
     left: 0,
     right: 0,
-    bottom:49,
+    bottom: 49,
     width: width,
     height: height - 49,
     backgroundColor: "#21212b",
@@ -264,7 +255,7 @@ var menuStyle = {
 
 var homeTitleStyle = {
     height: 64,
-    paddingTop: 10,
+    paddingTop: 5,
     color: "#ffffff",
     fontSize: 25,
     textAlign: "cneter",

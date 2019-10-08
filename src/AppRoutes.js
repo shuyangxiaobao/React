@@ -17,6 +17,9 @@ import Learn009 from './Learn/009React 条件渲染(三目 与 运算符)';
 import APEX  from "./APEX/Home/Home";
 import APEXTabbar from './APEX/APEXTabbar'
 
+import NEWS from './APEX/NEWS/APEXnews'
+import NewsDetail from './APEX/Home/newsDetail'
+
 // import Page1 from './Page1';
 // import Page2 from './Page2';
 /**
@@ -40,6 +43,13 @@ const AppRoutes = (
         <Route path="/learn008" component={Learn008}/>
         <Route path="/learn009" component={Learn009}/>
         <Route path="/apex" component={APEXTabbar}/>
+        <Route path="/news" component={NEWS}/>
+        <Route path="/newsdetail" component={NewsDetail}/>
+        
+
+        
+
+        
 
         
     </div>
