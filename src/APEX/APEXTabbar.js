@@ -21,6 +21,7 @@ export default class APEXTabbar extends React.Component {
     }
 
     bottomtabbarClick(index) {
+        
         this.setState({
             selectIndex: index
         })
@@ -114,4 +115,7 @@ export default class APEXTabbar extends React.Component {
     }
 }
 
+
+
+// npm install react-animate-on-scroll --save
 

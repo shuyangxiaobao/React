@@ -76,7 +76,7 @@ export default class NEWS extends React.Component {
     cellClick = (index,item) => {
         this.props.myRoute.push({
             pathname:"/newsdetail",
-            params:{url:this.state.baseIP+item.htmlFive+"?id="+item.id}
+            params:{url:this.state.baseIP+item.htmlFive+"?id="+item.id,myRoute:this.props.myRoute}
         });
     }
 

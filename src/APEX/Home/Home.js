@@ -18,6 +18,9 @@ export default class Entrance extends React.Component {
         this.leftClick = this.leftClick.bind(this);
         this.adverScroll = this.adverScroll.bind(this);
         this.bottomtabbarClick = this.bottomtabbarClick.bind(this);
+        this.backClick = this.backClick.bind(this);
+
+        
     }
 
     componentDidMount() {
@@ -40,12 +43,19 @@ export default class Entrance extends React.Component {
 
 
     leftClick() {
+        // this.props.myRoute.goBack();
 
         // 路由跳转
-        this.props.myRoute.push({
-            pathname: "/news",
-            // state:{args:args}
-        });
+        // this.props.myRoute.push({
+        //     pathname: "/news",
+        //     // state:{args:args}
+        // });
+    }
+
+
+    backClick(){
+        this.props.myRoute.goBack();
+  
     }
     adverScroll(event) {
         //    var obj =  document.getElementById('xiaobao');
@@ -103,7 +113,7 @@ export default class Entrance extends React.Component {
             borderWidth: 5,
             borderColor: "#ff0000",
             overflow: "scroll",
-            backgroundColor: '#888809',
+            // backgroundColor: '#888809',
             // transformX: this.state.index * width,
             // scrollLeft: this.state.index * width,
         };
@@ -138,6 +148,15 @@ export default class Entrance extends React.Component {
             width: width,
             height: 160
         }
+
+        var backStyle={
+            position: "absolute",
+            left: 50,
+            top: 34,
+            width: 20,
+            height: 20,
+
+        }
         return (
             <div style={{
                 position: "relative",
@@ -156,6 +175,7 @@ export default class Entrance extends React.Component {
 
                     <div style={topViewStyle}>
                         <img src={require('../image/menu.png')} style={menuStyle} onClick={this.leftClick} />
+                        <img src={require('../image/back.png')} style={backStyle} onClick={this.backClick} />
                         <p style={homeTitleStyle}>home</p>
                         <img src={require('../image/Message.png')} style={messageStyle} />
                     </div>
